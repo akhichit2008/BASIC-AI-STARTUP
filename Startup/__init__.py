@@ -1,6 +1,6 @@
-from flask import Flask,render_template
-from Startup.main import *
-import os
+from flask import Flask,render_template,request,url_for,redirect
+from Startup.models import *
+
 
 def create_app(test_config=None):
     app = Flask(__name__,instance_relative_config=True)
@@ -17,11 +17,12 @@ def create_app(test_config=None):
     except OSError:
         pass
 
+
     @app.route('/home')
     def home():
         return render_template('main.html') 
     @app.route('/login')
     def login():
         return "Hello Everybody"
-    
+
     return app
